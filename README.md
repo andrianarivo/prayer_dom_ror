@@ -1,24 +1,74 @@
-# README
+# Prayer Dom
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Prayer Dom helps you manage and get a better view on your prayers
 
-Things you may want to cover:
 
-* Ruby version
+## Authors
 
-* System dependencies
+- [@andrianarivo](https://www.github.com/andrianarivo)
 
-* Configuration
 
-* Database creation
+## Documentation
 
-* Database initialization
+<div align="center">
+  <p><em>Entity Relationship Diagram</em></p>
+  <img src="./prayer_dom_erd.png" width="512">
+</div>
 
-* How to run the test suite
+## Features
 
-* Services (job queues, cache servers, search engines, etc.)
+- Manage prayers
+- Create Prayer types
+- Change your prayer status
+- Create Topics
 
-* Deployment instructions
 
-* ...
+## Installation
+
+Install ruby, node.js and yarn (always use LTS version)
+
+```bash
+  ruby --version
+  node --version
+  yarn --version
+```
+    
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/andrianarivo/prayer_dom
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  bundle && rails db:setup
+```
+
+Start the server
+
+```bash
+  rails s
+```
+
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  bundle exec rspec
+```
+
+
+## License
+
+[MIT](./LICENSE)

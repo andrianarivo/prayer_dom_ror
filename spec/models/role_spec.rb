@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Role, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  subject do
+    Role.new(title: 'admin')
+  end
+
+  before {
+    subject.save
+  }
+
+  it 'should have a title' do
+    expect(subject).to be_valid
+  end
+
 end

@@ -1,0 +1,5 @@
+diagnostics:
+  rubocop:
+    command: "rubocop"
+    patterns:
+      - "**/*.rb"

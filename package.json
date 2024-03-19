@@ -1,0 +1,19 @@
+{
+  "name": "prayer_dom",
+  "version": "1.0.0",
+  "description": "Prayer Dom helps you manage and get a better view on your prayers",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "rubocop -A",
+    "prepare": "husky"
+  },
+  "author": "david",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^9.0.11"
+  }
+}

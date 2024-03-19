@@ -1,0 +1,5 @@
+#!/bin/sh
+# This hook runs Rubocop before each commit
+
+# Run Rubocop
+rubocop -A

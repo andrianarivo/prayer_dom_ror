@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Role, type: :model do
   subject do
-    Role.new(title: 'admin')
+    FactoryBot.create(:role)
   end
 
   before do

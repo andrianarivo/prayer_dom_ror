@@ -1,5 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe 'home/index.html.tailwindcss', type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe 'home/index.html.erb', type: :view do
+  include Devise::Test::ControllerHelpers
+  subject do
+    FactoryBot.create(:user)
+  end
+
+  before(:each) do
+    sign_in subject
+  end
+
+  it 'renders the page' do
+    render
+    expect(rendered).to match(/Hello world!/)
+  end
 end

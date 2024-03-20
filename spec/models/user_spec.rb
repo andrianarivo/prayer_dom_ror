@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:role) { Role.find_or_create_by(title: 'admin') }
-
   subject do
-    User.new(email: 'qS6Z8@example.com', username: 'test', role:)
+    FactoryBot.create(:user)
   end
 
   before { subject.save }

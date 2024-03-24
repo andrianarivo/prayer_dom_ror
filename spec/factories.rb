@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :tag do
+    label { Faker::Lorem.word }
+  end
+
   factory :role, aliases: [:admin] do
     title { 'admin' }
   end

@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'tags/edit', type: :view do
   let(:tag) do
-    Tag.create!(
-      label: 'MyString'
-    )
+    FactoryBot.create(:tag)
   end
 
   before(:each) do

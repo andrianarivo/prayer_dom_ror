@@ -2,14 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'tags/index', type: :view do
   before(:each) do
-    assign(:tags, [
-             Tag.create!(
-               label: 'Label'
-             ),
-             Tag.create!(
-               label: 'Label'
-             )
-           ])
+    assign(:tags, FactoryBot.create_list(:tag, 2))
   end
 
   it 'renders a list of tags' do

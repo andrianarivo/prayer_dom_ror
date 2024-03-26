@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_25_163133) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_162634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_163133) do
     t.index ["tag_id"], name: "index_topics_on_tag_id"
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string "label"
+    t.string "subject"
+    t.string "description"
+    t.bigint "topic_id", null: false
+    t.bigint "tag_id", null: false
+    t.integer "prayer_duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_types_on_tag_id"
+    t.index ["topic_id"], name: "index_types_on_topic_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "username"
@@ -51,5 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_163133) do
   end
 
   add_foreign_key "topics", "tags"
+  add_foreign_key "types", "tags"
+  add_foreign_key "types", "topics"
   add_foreign_key "users", "roles"
 end

@@ -1,0 +1,37 @@
+<div id="<%= dom_id type %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Label:</strong>
+    <%= type.label %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Subject:</strong>
+    <%= type.subject %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= type.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Topic:</strong>
+    <%= type.topic_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tag:</strong>
+    <%= type.tag_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Prayer duration:</strong>
+    <%= type.prayer_duration %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this type", type, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this type", edit_type_path(type), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

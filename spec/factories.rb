@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :status do
+    title { Faker::Lorem.word }
+  end
+
   factory :type do
     label { Faker::Lorem.word }
     subject { Faker::Name.first_name }

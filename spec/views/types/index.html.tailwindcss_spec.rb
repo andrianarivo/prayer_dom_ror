@@ -11,5 +11,7 @@ RSpec.describe 'types/index', type: :view do
     assert_select cell_selector, text: Regexp.new('Label'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Subject'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Description'.to_s), count: 2
+    assert_select cell_selector, text: Regexp.new('Topic'.to_s), count: 2
+    assert_select cell_selector, text: Regexp.new('Tag'.to_s), count: 2
   end
 end

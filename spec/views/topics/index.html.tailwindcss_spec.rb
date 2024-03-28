@@ -10,5 +10,6 @@ RSpec.describe 'topics/index', type: :view do
     cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
     assert_select cell_selector, text: Regexp.new('Title'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Description'.to_s), count: 2
+    assert_select cell_selector, text: Regexp.new('Tag'.to_s), count: 2
   end
 end

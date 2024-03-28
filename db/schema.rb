@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_27_155315) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_28_160150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "prayers", force: :cascade do |t|
+    t.string "description"
+    t.bigint "status_id", null: false
+    t.bigint "type_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "tag_id", null: false
+    t.date "datetime_to_pray", default: -> { "CURRENT_DATE" }
+    t.string "location", default: "home"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status_id"], name: "index_prayers_on_status_id"
+    t.index ["tag_id"], name: "index_prayers_on_tag_id"
+    t.index ["type_id"], name: "index_prayers_on_type_id"
+    t.index ["user_id"], name: "index_prayers_on_user_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "title"
@@ -47,7 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_155315) do
     t.string "description"
     t.bigint "topic_id", null: false
     t.bigint "tag_id", null: false
-    t.integer "prayer_duration"
+    t.integer "prayer_duration", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_types_on_tag_id"
@@ -69,6 +85,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_155315) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "prayers", "statuses"
+  add_foreign_key "prayers", "tags"
+  add_foreign_key "prayers", "types"
+  add_foreign_key "prayers", "users"
   add_foreign_key "topics", "tags"
   add_foreign_key "types", "tags"
   add_foreign_key "types", "topics"

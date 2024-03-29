@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notes
   resources :prayers
   resources :statuses
   resources :types

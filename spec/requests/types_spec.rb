@@ -29,12 +29,10 @@ RSpec.describe '/types', type: :request do
       prayer_duration: -1, topic: nil, tag: }
   end
 
-  subject do
-    FactoryBot.create(:user)
-  end
+  let(:author) { FactoryBot.create(:author) }
 
   before(:each) do
-    sign_in subject
+    sign_in author
   end
 
   describe 'GET /index' do

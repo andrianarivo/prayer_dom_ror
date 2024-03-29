@@ -16,6 +16,8 @@ RSpec.describe '/statuses', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Status. As you add validations to Status, be sure to
   # adjust the attributes here as well.
+  let(:author) { FactoryBot.create(:author) }
+
   let(:valid_attributes) do
     { title: Faker::Lorem.word }
   end
@@ -24,12 +26,8 @@ RSpec.describe '/statuses', type: :request do
     { title: '' }
   end
 
-  subject do
-    FactoryBot.create(:user)
-  end
-
   before(:each) do
-    sign_in subject
+    sign_in author
   end
 
   describe 'GET /index' do

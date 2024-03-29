@@ -16,16 +16,13 @@ RSpec.describe '/prayers', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Prayer. As you add validations to Prayer, be sure to
   # adjust the attributes here as well.
-  subject do
-    FactoryBot.create(:user)
-  end
-
   let(:status) { FactoryBot.create(:status) }
   let(:type) { FactoryBot.create(:type) }
   let(:tag) { FactoryBot.create(:tag) }
+  let(:author) { FactoryBot.create(:author) }
 
   let(:valid_attributes) do
-    { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: subject.id,
+    { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
       tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city }
   end
 
@@ -35,7 +32,7 @@ RSpec.describe '/prayers', type: :request do
   end
 
   before(:each) do
-    sign_in subject
+    sign_in author
   end
 
   describe 'GET /index' do
@@ -100,7 +97,7 @@ RSpec.describe '/prayers', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: subject.id,
+        { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
           tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city }
       end
 

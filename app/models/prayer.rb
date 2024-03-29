@@ -4,6 +4,8 @@ class Prayer < ApplicationRecord
   belongs_to :user
   belongs_to :tag, required: false
 
+  has_many :notes, dependent: :destroy
+
   validates :description, :status, :type, :user, :location, presence: true
   validates :datetime_to_pray, presence: true, timeliness: { type: :date }
 end

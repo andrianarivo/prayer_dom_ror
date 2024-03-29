@@ -16,14 +16,7 @@ RSpec.describe '/topics', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Topic. As you add validations to Topic, be sure to
   # adjust the attributes here as well.
-  subject do
-    FactoryBot.create(:user)
-  end
-
-  before(:each) do
-    sign_in subject
-  end
-
+  let(:author) { FactoryBot.create(:author) }
   let(:tag) { FactoryBot.create(:tag) }
 
   let(:valid_attributes) do
@@ -32,6 +25,10 @@ RSpec.describe '/topics', type: :request do
 
   let(:invalid_attributes) do
     { title: '', description: '', tag_id: nil }
+  end
+
+  before(:each) do
+    sign_in author
   end
 
   describe 'GET /index' do

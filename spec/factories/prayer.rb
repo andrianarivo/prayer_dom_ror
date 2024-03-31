@@ -7,5 +7,6 @@ FactoryBot.define do
     association :tag
     datetime_to_pray { Faker::Date.backward(days: 30) }
     location { Faker::Address.city }
+    summary { Faker::Lorem.sentence(word_count: rand(2..8)) }
   end
 end

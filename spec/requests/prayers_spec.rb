@@ -23,7 +23,8 @@ RSpec.describe '/prayers', type: :request do
 
   let(:valid_attributes) do
     { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
-      tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city }
+      tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city,
+      summary: Faker::Lorem.sentence(word_count: rand(2..8)) }
   end
 
   let(:invalid_attributes) do
@@ -71,6 +72,7 @@ RSpec.describe '/prayers', type: :request do
       it 'creates a new Prayer' do
         expect do
           post prayers_url, params: { prayer: valid_attributes }
+          puts response.body
         end.to change(Prayer, :count).by(1)
       end
 
@@ -98,7 +100,8 @@ RSpec.describe '/prayers', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
-          tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city }
+          tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city,
+          summary: Faker::Lorem.sentence(word_count: rand(2..8)) }
       end
 
       it 'updates the requested prayer' do

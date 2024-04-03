@@ -54,4 +54,9 @@ RSpec.describe Prayer, type: :model do
     FactoryBot.create(:answer, prayer: subject)
     expect(subject.answers_count).to eq(1)
   end
+
+  it 'priority has default value' do
+    expect(subject.priority).to_not be_nil
+    expect(subject).to be_valid
+  end
 end

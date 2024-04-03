@@ -15,5 +15,6 @@ RSpec.describe 'prayers/index', type: :view do
     assert_select cell_selector, text: Regexp.new('Tag'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Location'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Summary'.to_s), count: 2
+    assert_select cell_selector, text: Regexp.new('Priority'.to_s), count: 2
   end
 end

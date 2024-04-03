@@ -24,12 +24,12 @@ RSpec.describe '/prayers', type: :request do
   let(:valid_attributes) do
     { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
       tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city,
-      summary: Faker::Lorem.sentence(word_count: rand(2..8)) }
+      summary: Faker::Lorem.sentence(word_count: rand(2..8)), priority: PriorityLevels::LEVELS.sample }
   end
 
   let(:invalid_attributes) do
     { description: '', status_id: nil, type_id: nil, user_id: nil,
-      tag_id: nil, datetime_to_pray: nil, location: '' }
+      tag_id: nil, datetime_to_pray: nil, location: '', summary: '', priority: nil }
   end
 
   before(:each) do
@@ -101,7 +101,7 @@ RSpec.describe '/prayers', type: :request do
       let(:new_attributes) do
         { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
           tag_id: tag.id, datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city,
-          summary: Faker::Lorem.sentence(word_count: rand(2..8)) }
+          summary: Faker::Lorem.sentence(word_count: rand(2..8)), priority: PriorityLevels::LEVELS.sample }
       end
 
       it 'updates the requested prayer' do
@@ -114,6 +114,8 @@ RSpec.describe '/prayers', type: :request do
         expect(prayer.tag_id).to eq(new_attributes[:tag_id])
         expect(prayer.datetime_to_pray).to eq(new_attributes[:datetime_to_pray])
         expect(prayer.location).to eq(new_attributes[:location])
+        expect(prayer.summary).to eq(new_attributes[:summary])
+        expect(prayer.priority).to eq(new_attributes[:priority])
       end
 
       it 'redirects to the prayer' do

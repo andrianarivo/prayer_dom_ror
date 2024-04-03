@@ -14,5 +14,6 @@ RSpec.describe 'prayers/show', type: :view do
     expect(rendered).to match(/Status/)
     expect(rendered).to match(/Location/)
     expect(rendered).to match(/Summary/)
+    expect(rendered).to match(/Priority/)
   end
 end

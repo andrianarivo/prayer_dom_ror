@@ -26,6 +26,8 @@ RSpec.describe 'prayers/edit', type: :view do
       assert_select 'input[name=?]', 'prayer[location]'
 
       assert_select 'input[name=?]', 'prayer[summary]'
+
+      assert_select 'select[name=?]', 'prayer[priority]'
     end
   end
 end

@@ -12,6 +12,7 @@ class Prayer < ApplicationRecord
   validates_length_of :words_in_summary, within: 2..8
   validates :notes_count, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :answers_count, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :priority, inclusion: { in: PriorityLevels::LEVELS }
 
   private
 

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :role, aliases: [:admin] do
-    title { 'admin' }
+  factory :role do
+    title { RoleConstants::ROLES.sample }
   end
 end

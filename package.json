@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "bundle exec rspec",
-    "lint": "bundle exec rubocop -A",
+    "test": "test -n \"$SKIP_HUSKY\" || rspec",
+    "lint": "test -n \"$SKIP_HUSKY\" || rubocop -A",
     "prepare": "husky"
   },
   "author": "david",

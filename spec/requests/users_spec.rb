@@ -59,4 +59,12 @@ RSpec.describe 'Users', type: :request do
       end
     end
   end
+
+  describe 'DELETE /users/sign_out' do
+    it 'destroys the user session' do
+      delete destroy_user_session_path
+      expect(response).to redirect_to(root_path)
+      expect(controller.current_user).to be_nil
+    end
+  end
 end

@@ -2,10 +2,11 @@ class Prayer < ApplicationRecord
   belongs_to :status
   belongs_to :type
   belongs_to :user
-  belongs_to :tag, required: false
 
   has_many :notes, dependent: :destroy
   has_many :answers, dependent: :destroy
+
+  has_and_belongs_to_many :tags
 
   validates :description, :status, :type, :user, :location, :summary, presence: true
   validates :datetime_to_pray, presence: true, timeliness: { type: :date }

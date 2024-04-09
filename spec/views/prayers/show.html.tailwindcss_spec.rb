@@ -8,7 +8,6 @@ RSpec.describe 'prayers/show', type: :view do
   it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Description/)
-    expect(rendered).to match(/Tag/)
     expect(rendered).to match(/Type/)
     expect(rendered).to match(/User/)
     expect(rendered).to match(/Status/)

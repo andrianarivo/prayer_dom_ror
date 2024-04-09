@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_164041) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_163147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +36,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_164041) do
     t.bigint "status_id", null: false
     t.bigint "type_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "tag_id", null: false
     t.date "datetime_to_pray", default: -> { "CURRENT_DATE" }
     t.string "location", default: "home"
     t.datetime "created_at", null: false
@@ -46,9 +45,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_164041) do
     t.integer "answers_count", default: 0
     t.string "priority", default: "low"
     t.index ["status_id"], name: "index_prayers_on_status_id"
-    t.index ["tag_id"], name: "index_prayers_on_tag_id"
     t.index ["type_id"], name: "index_prayers_on_type_id"
     t.index ["user_id"], name: "index_prayers_on_user_id"
+  end
+
+  create_table "prayers_tags", id: false, force: :cascade do |t|
+    t.bigint "prayer_id", null: false
+    t.bigint "tag_id", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -109,7 +112,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_164041) do
   add_foreign_key "answers", "prayers"
   add_foreign_key "notes", "prayers"
   add_foreign_key "prayers", "statuses"
-  add_foreign_key "prayers", "tags"
   add_foreign_key "prayers", "types"
   add_foreign_key "prayers", "users"
   add_foreign_key "topics", "tags"

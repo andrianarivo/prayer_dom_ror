@@ -1,59 +1,71 @@
 <div id="<%= dom_id prayer %>">
+  <div class="max-w-sm rounded-xl overflow-hidden shadow-lg flex flex-col gap-6 px-6 py-4">
+    <div class="flex gap-3">
+      <% prayer.tags.each do |tag| %>
+        <span class="rounded-md bg-gray-200 px-3 py-1"><%= tag.label.capitalize %></span>
+      <% end %>
+    </div>
+    <div class="">
+      <div class="font-medium text-2xl mb-2"><%= prayer.summary %></div>
+      <p class="text-gray-500 text-base">
+        <%= prayer.description %>
+      </p>
+    </div>
+    <div class="flex justify-end gap-2">
+      <div class="flex items-center gap-1">
+        <span class="material-symbols-outlined small-icon-gray">
+          description
+        </span>
+        <p class="text-gray-500 text-sm">2 notes</p>
+      </div>
+      <div class="flex items-center gap-1">
+        <span class="material-symbols-outlined small-icon-gray">
+          mark_email_read
+        </span>
+        <p class="text-gray-500 text-sm">2 answers</p>
+      </div>
+    </div>
+  </div>
   <p class="my-5">
     <strong class="block font-medium mb-1">Description:</strong>
     <%= prayer.description %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Status:</strong>
     <%= prayer.status_id %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Type:</strong>
     <%= prayer.type_id %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
     <%= prayer.user_id %>
   </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Tag:</strong>
-    <%= prayer.tag_id %>
-  </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Datetime to pray:</strong>
     <%= prayer.datetime_to_pray %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Location:</strong>
     <%= prayer.location %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Summary:</strong>
     <%= prayer.summary %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Notes nb:</strong>
     <%= prayer.notes_count %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Answers nb:</strong>
     <%= prayer.answers_count %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Priority:</strong>
     <%= prayer.priority %>
   </p>
-
   <% if action_name != "show" %>
     <%= link_to "Show this prayer", prayer, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this prayer", edit_prayer_path(prayer), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

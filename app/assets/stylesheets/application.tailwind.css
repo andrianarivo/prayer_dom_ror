@@ -14,5 +14,10 @@
 
 .small-icon-gray {
   color: gray;
-  font-size: 1.15rem !important;
+  font-size: 1.15rem;
+}
+
+.medium-icon-gray {
+  color: gray;
+  font-size: 1.4rem;
 }

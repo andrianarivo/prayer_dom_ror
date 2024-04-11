@@ -13,6 +13,19 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <nav>
+      <ul>
+        <% I18n.available_locales.each do |locale| %>
+          <li>
+            <% if I18n.locale == locale %>
+              <%= t(locale, scope: 'locales') %>
+            <% else %>
+              <%= link_to t(locale, scope: 'locales'), url_for(locale: locale) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

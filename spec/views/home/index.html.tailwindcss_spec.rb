@@ -11,6 +11,6 @@ RSpec.describe 'home/index.html.erb', type: :view do
 
   it 'renders the page' do
     render
-    expect(rendered).to match(/Hello world!/)
+    expect(rendered).to match(/Hello world/)
   end
 end

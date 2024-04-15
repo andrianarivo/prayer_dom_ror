@@ -8,6 +8,15 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
+    fontSize: {
+      sm: '0.7rem',
+      base: '0.9rem',
+      xl: '1.15rem',
+      '2xl': '1.463rem',
+      '3xl': '1.853rem',
+      '4xl': '2.341rem',
+      '5xl': '2.952rem',
+    },
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],

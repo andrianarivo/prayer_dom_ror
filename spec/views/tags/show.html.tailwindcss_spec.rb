@@ -11,5 +11,7 @@ RSpec.describe 'tags/show', type: :view do
     render
 
     expect(rendered).to match(tag.label)
+    expect(rendered).to match(tag.color)
+    expect(rendered).to match(tag.bg_color)
   end
 end

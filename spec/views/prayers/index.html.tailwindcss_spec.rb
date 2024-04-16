@@ -12,7 +12,7 @@ RSpec.describe 'prayers/index', type: :view do
     assert_select 'div#prayers' do
       prayers.each do |prayer|
         assert_select 'div.relative' do
-          assert_select '.max-w-sm' do
+          assert_select '.max-w-xs' do
             assert_select '.font-medium', text: prayer.summary
             assert_select '.text-gray-500', text: prayer.description
             assert_select '.text-gray-500', text: "#{prayer.notes_count} notes"

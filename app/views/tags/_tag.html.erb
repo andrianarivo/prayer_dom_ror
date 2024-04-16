@@ -3,7 +3,14 @@
     <strong class="block font-medium mb-1">Label:</strong>
     <%= tag.label %>
   </p>
-
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Text Color:</strong>
+    <%= tag.color %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Background Color:</strong>
+    <%= tag.bg_color%>
+  </p>
   <% if action_name != "show" %>
     <%= link_to "Show this tag", tag, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this tag", edit_tag_path(tag), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

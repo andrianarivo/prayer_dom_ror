@@ -17,7 +17,7 @@ RSpec.describe '/tags', type: :request do
   # Tag. As you add validations to Tag, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { label: Faker::Lorem.word }
+    { label: Faker::Lorem.word, color: '#2c62b4', bg_color: '#e1f6ff' }
   end
 
   let(:invalid_attributes) do
@@ -92,7 +92,7 @@ RSpec.describe '/tags', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        { label: Faker::Lorem.word }
+        { label: Faker::Lorem.word, color: '#2f9358', bg_color: '#cdf4dd' }
       end
 
       it 'updates the requested tag' do
@@ -100,6 +100,8 @@ RSpec.describe '/tags', type: :request do
         patch tag_url(tag), params: { tag: new_attributes }
         tag.reload
         expect(tag.label).to eq(new_attributes[:label])
+        expect(tag.color).to eq(new_attributes[:color])
+        expect(tag.bg_color).to eq(new_attributes[:bg_color])
       end
 
       it 'redirects to the tag' do

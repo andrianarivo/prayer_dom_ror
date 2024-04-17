@@ -99,9 +99,8 @@ RSpec.describe '/tags', type: :request do
         tag = Tag.create! valid_attributes
         patch tag_url(tag), params: { tag: new_attributes }
         tag.reload
-        expect(tag.label).to eq(new_attributes[:label])
-        expect(tag.color).to eq(new_attributes[:color])
-        expect(tag.bg_color).to eq(new_attributes[:bg_color])
+        tag_attributes = tag.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(tag_attributes).to include(new_attributes)
       end
 
       it 'redirects to the tag' do

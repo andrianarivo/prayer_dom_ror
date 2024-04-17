@@ -23,12 +23,13 @@ RSpec.describe '/prayers', type: :request do
   let(:valid_attributes) do
     { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
       datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city,
-      summary: Faker::Lorem.sentence(word_count: rand(2..8)), priority: PriorityLevels::LEVELS.sample }
+      summary: Faker::Lorem.sentence(word_count: rand(2..8)), priority: PriorityLevels::LEVELS.sample,
+      color: '#3b82f6' }
   end
 
   let(:invalid_attributes) do
     { description: '', status_id: nil, type_id: nil, user_id: nil,
-      datetime_to_pray: nil, location: '', summary: '', priority: nil }
+      datetime_to_pray: nil, location: '', summary: '', priority: nil, color: '' }
   end
 
   before(:each) do
@@ -100,20 +101,16 @@ RSpec.describe '/prayers', type: :request do
       let(:new_attributes) do
         { description: Faker::Lorem.sentence, status_id: status.id, type_id: type.id, user_id: author.id,
           datetime_to_pray: Faker::Date.backward(days: 30), location: Faker::Address.city,
-          summary: Faker::Lorem.sentence(word_count: rand(2..8)), priority: PriorityLevels::LEVELS.sample }
+          summary: Faker::Lorem.sentence(word_count: rand(2..8)), priority: PriorityLevels::LEVELS.sample,
+          color: '#3b82f6' }
       end
 
       it 'updates the requested prayer' do
         prayer = Prayer.create! valid_attributes
         patch prayer_url(prayer), params: { prayer: new_attributes }
         prayer.reload
-        expect(prayer.description).to eq(new_attributes[:description])
-        expect(prayer.status_id).to eq(new_attributes[:status_id])
-        expect(prayer.type_id).to eq(new_attributes[:type_id])
-        expect(prayer.datetime_to_pray).to eq(new_attributes[:datetime_to_pray])
-        expect(prayer.location).to eq(new_attributes[:location])
-        expect(prayer.summary).to eq(new_attributes[:summary])
-        expect(prayer.priority).to eq(new_attributes[:priority])
+        prayer_attributes = prayer.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(prayer_attributes).to include(new_attributes)
       end
 
       it 'redirects to the prayer' do

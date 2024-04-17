@@ -84,7 +84,8 @@ RSpec.describe 'Roles', type: :request do
         role = Role.create! valid_attributes
         patch role_url(role), params: { role: new_attributes }
         role.reload
-        expect(role.title).to eq(new_attributes[:title])
+        role_attributes = role.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(role_attributes).to include(new_attributes)
       end
 
       it 'redirects to the role' do

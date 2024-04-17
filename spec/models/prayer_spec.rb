@@ -28,13 +28,13 @@ RSpec.describe Prayer, type: :model do
   end
 
   it 'datetime_to_pray has default value' do
-    expect(subject.datetime_to_pray).to_not be_nil
-    expect(subject).to be_valid
+    prayer = Prayer.new
+    expect(prayer.datetime_to_pray).to eq(Time.current.to_date)
   end
 
   it 'location has default value' do
-    expect(subject.location).to_not be_nil
-    expect(subject).to be_valid
+    prayer = Prayer.new
+    expect(prayer.location).to eq('home')
   end
 
   it 'notes_count is greater than or equal to 0' do
@@ -56,7 +56,12 @@ RSpec.describe Prayer, type: :model do
   end
 
   it 'priority has default value' do
-    expect(subject.priority).to_not be_nil
-    expect(subject).to be_valid
+    prayer = Prayer.new
+    expect(prayer.priority).to eq(PriorityLevels::LOW)
+  end
+
+  it 'color has default value' do
+    prayer = Prayer.new
+    expect(prayer.color).to eq('#3300ff')
   end
 end

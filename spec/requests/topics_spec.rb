@@ -100,9 +100,8 @@ RSpec.describe '/topics', type: :request do
         topic = Topic.create! valid_attributes
         patch topic_url(topic), params: { topic: new_attributes }
         topic.reload
-        expect(topic.title).to eq(new_attributes[:title])
-        expect(topic.description).to eq(new_attributes[:description])
-        expect(topic.tag_id).to eq(new_attributes[:tag_id])
+        topic_attributes = topic.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(topic_attributes).to include(new_attributes)
       end
 
       it 'redirects to the topic' do

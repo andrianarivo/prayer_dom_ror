@@ -8,6 +8,8 @@ class Prayer < ApplicationRecord
 
   has_and_belongs_to_many :tags
 
+  attribute :datetime_to_pray, default: -> { Time.current }
+
   validates :description, :status, :type, :user, :location, :summary, presence: true
   validates :datetime_to_pray, presence: true, timeliness: { type: :date }
   validates_length_of :words_in_summary, within: 2..8

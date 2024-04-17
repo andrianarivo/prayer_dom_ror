@@ -100,9 +100,8 @@ RSpec.describe '/notes', type: :request do
         note = Note.create! valid_attributes
         patch note_url(note), params: { note: new_attributes }
         note.reload
-        expect(note.prayer_id).to eq(new_attributes[:prayer_id])
-        expect(note.title).to eq(new_attributes[:title])
-        expect(note.content).to eq(new_attributes[:content])
+        note_attributes = note.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(note_attributes).to include(new_attributes)
       end
 
       it 'redirects to the note' do

@@ -106,11 +106,8 @@ RSpec.describe '/types', type: :request do
         type = Type.create! valid_attributes
         patch type_url(type), params: { type: new_attributes }
         type.reload
-        expect(type.label).to eq(new_attributes[:label])
-        expect(type.subject).to eq(new_attributes[:subject])
-        expect(type.description).to eq(new_attributes[:description])
-        expect(type.prayer_duration).to eq(new_attributes[:prayer_duration])
-        expect(type.topic).to eq(topic)
+        type_attributes = type.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(type_attributes).to include(new_attributes)
       end
 
       it 'redirects to the type' do

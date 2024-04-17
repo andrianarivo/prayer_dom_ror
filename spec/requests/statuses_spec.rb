@@ -99,7 +99,8 @@ RSpec.describe '/statuses', type: :request do
         status = Status.create! valid_attributes
         patch status_url(status), params: { status: new_attributes }
         status.reload
-        expect(status.title).to eq(new_attributes[:title])
+        status_attributes = status.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(status_attributes).to include(new_attributes)
       end
 
       it 'redirects to the status' do

@@ -100,8 +100,8 @@ RSpec.describe '/answers', type: :request do
         answer = Answer.create! valid_attributes
         patch answer_url(answer), params: { answer: new_attributes }
         answer.reload
-        expect(answer.content).to eq(new_attributes[:content])
-        expect(answer.prayer_id).to eq(new_attributes[:prayer_id])
+        answer_attributes = answer.attributes.slice(*new_attributes.keys.map(&:to_s)).symbolize_keys
+        expect(answer_attributes).to include(new_attributes)
       end
 
       it 'redirects to the answer' do

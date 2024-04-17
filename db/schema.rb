@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_16_152238) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_17_161445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_152238) do
     t.integer "notes_count", default: 0
     t.integer "answers_count", default: 0
     t.string "priority", default: "low"
+    t.string "color", default: "#3300ff"
     t.index ["status_id"], name: "index_prayers_on_status_id"
     t.index ["type_id"], name: "index_prayers_on_type_id"
     t.index ["user_id"], name: "index_prayers_on_user_id"

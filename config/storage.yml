@@ -32,3 +32,9 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+google_dev:
+  service: GCS
+  project: prayer-dom
+  credentials: <%= Rails.root.join("config/prayer-dom-3aa7b5bf70bb.json") %>
+  bucket: prayer-dom-profile-pics

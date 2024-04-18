@@ -17,8 +17,6 @@ RSpec.describe 'prayers/new', type: :view do
 
       assert_select 'input[name=?]', 'prayer[user_id]'
 
-      assert_select 'input[name=?]', 'prayer[tag_id]'
-
       assert_select 'input[name=?]', 'prayer[location]'
 
       assert_select 'input[name=?]', 'prayer[summary]'

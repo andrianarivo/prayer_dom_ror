@@ -65,7 +65,7 @@ class PrayersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def prayer_params
-    params.require(:prayer).permit(:description, :status_id, :type_id, :user_id, :tag_id, :datetime_to_pray,
+    params.require(:prayer).permit(:description, :status_id, :type_id, :user_id, :datetime_to_pray,
                                    :location, :summary, :priority, :color)
   end
 end

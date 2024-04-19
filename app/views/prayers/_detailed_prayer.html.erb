@@ -1,0 +1,57 @@
+<div class="relative">
+  <div class="max-w-3xl rounded-xl border border-gray-300 border-solid overflow-hidden shadow-lg flex flex-col gap-4 px-6 py-4">
+    <!-- Card Header -->
+    <div class="flex gap-3">
+      <% prayer.tags.each do |tag| %>
+        <span class="rounded-md bg-gray-200 px-3 py-1 text-base font-semibold" style="background-color: <%= tag.bg_color %>; color: <%= tag.color %>"><%= tag.label.capitalize %></span>
+      <% end %>
+    </div>
+    <!-- Card Body -->
+    <div>
+      <div class="font-medium text-xl mb-1"><%= prayer.summary %></div>
+      <p class="text-gray-500 text-base line-clamp-4 overflow-hidden">
+        <%= prayer.description %>
+      </p>
+      <div class="flex justify-end gap-2 mt-3">
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined small-icon-gray">
+            description
+          </span>
+          <p class="text-gray-500 text-sm"><%= prayer.notes_count %> notes</p>
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined small-icon-gray">
+            mark_email_read
+          </span>
+          <p class="text-gray-500 text-sm"><%= prayer.answers_count %> answers</p>
+        </div>
+      </div>
+      <hr class="mt-3" />
+    </div>
+    <!-- Card Footer -->
+    <div class="flex justify-between items-center">
+      <div class="flex gap-2 items-center">
+        <% if prayer.user.avatar.attached? %>
+          <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
+            <%= image_tag prayer.user.avatar.url, class: "h-full w-full object-cover" %>
+          </div>
+        <% else %>
+          <div id="avatar" class="flex items-center justify-center h-8 w-8 bg-blue-500 rounded-full text-white font-semibold text-md">
+            <%= avatar_text(prayer.user.username) %>
+          </div>
+        <% end %>
+        <p class="text-base font-medium"><%= prayer.user.username.capitalize %></p>
+      </div>
+      <div class="flex gap-2 items-center">
+        <span class="material-symbols-outlined medium-icon-gray">
+          today
+        </span>
+        <p class="text-lg text-gray-500"><%= formatted_date(prayer.datetime_to_pray) %></p>
+      </div>
+    </div>
+    <!-- Action Region -->
+    <%= render prayer.notes %>
+  </div>
+  <!-- Style -->
+  <div class="absolute top-16 left-[-1px] w-1 h-16 rounded-lg" style="background-color: <%= prayer.color %>"></div>
+</div>

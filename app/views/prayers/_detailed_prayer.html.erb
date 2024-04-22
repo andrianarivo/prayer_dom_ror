@@ -31,15 +31,7 @@
     <!-- Card Footer -->
     <div class="flex justify-between items-center">
       <div class="flex gap-2 items-center">
-        <% if prayer.user.avatar.attached? %>
-          <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
-            <%= image_tag prayer.user.avatar.url, class: "h-full w-full object-cover" %>
-          </div>
-        <% else %>
-          <div id="avatar" class="flex items-center justify-center h-8 w-8 bg-blue-500 rounded-full text-white font-semibold text-md">
-            <%= avatar_text(prayer.user.username) %>
-          </div>
-        <% end %>
+        <%= render partial: "shared/avatar", user: prayer.user %>
         <p class="text-base font-medium"><%= prayer.user.username.capitalize %></p>
       </div>
       <div class="flex gap-2 items-center">

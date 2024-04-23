@@ -1,9 +1,11 @@
-<% if user.avatar.attached? %>
-  <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
-    <%= image_tag user.avatar.url, class: "h-full w-full object-cover" %>
+<div class="avatar">
+  <div class="w-6 rounded-full ring-1 ring-primary ring-offset-base-100 ring-offset-2">
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar.variant(:thumb).processed %>
+    <% else %>
+      <div class="flex items-center justify-center h-8 w-8 bg-blue-500 rounded-full text-white font-semibold text-md">
+        <%= avatar_text(user.username) %>
+      </div>
+    <% end %>
   </div>
-<% else %>
-  <div id="avatar" class="flex items-center justify-center h-8 w-8 bg-blue-500 rounded-full text-white font-semibold text-md">
-    <%= avatar_text(user.username) %>
-  </div>
-<% end %>
+</div>

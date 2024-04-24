@@ -66,6 +66,7 @@ RSpec.configure do |config|
   # Include Devise helpers
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include ActionDispatch::TestProcess::FixtureFile
 end
 
 class ActionView::TestCase::TestController

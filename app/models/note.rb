@@ -1,5 +1,6 @@
 class Note < ApplicationRecord
   belongs_to :prayer
+  belongs_to :user
 
   validates :content, :prayer, :title, presence: true
 

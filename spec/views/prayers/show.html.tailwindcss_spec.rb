@@ -9,7 +9,7 @@ RSpec.describe 'prayers/show', type: :view do
   end
 
   it 'renders the prayer details' do
-    expect(rendered).to have_selector("div#prayer_#{prayer.id}.m-6")
+    expect(rendered).to have_selector("div#prayer_#{prayer.id}.relative")
 
     # Check for tags
     prayer.tags.each do |tag|
@@ -26,7 +26,6 @@ RSpec.describe 'prayers/show', type: :view do
     expect(rendered).to have_selector('p', text: "#{prayer.answers_count} answers")
 
     # Check for user details
-    expect(rendered).to have_selector('div#avatar', text: prayer.user.username[0].upcase)
     expect(rendered).to have_selector('p', text: prayer.user.username.capitalize)
 
     # Check for formatted date

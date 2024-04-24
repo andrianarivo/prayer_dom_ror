@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+  let(:author) { FactoryBot.create(:author) }
   let(:prayer) { FactoryBot.create(:prayer) }
 
   subject do
-    FactoryBot.create(:note, prayer:)
+    FactoryBot.create(:note, prayer:, user: author)
   end
 
   before { subject.save }

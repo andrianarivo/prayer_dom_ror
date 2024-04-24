@@ -20,11 +20,11 @@ RSpec.describe '/notes', type: :request do
   let(:author) { FactoryBot.create(:author) }
 
   let(:valid_attributes) do
-    { prayer_id: prayer.id, title: Faker::Lorem.word, content: Faker::Lorem.sentence }
+    { user_id: author.id, prayer_id: prayer.id, title: Faker::Lorem.word, content: Faker::Lorem.sentence }
   end
 
   let(:invalid_attributes) do
-    { prayer_id: nil, title: '', content: '' }
+    { user_id: nil, prayer_id: nil, title: '', content: '' }
   end
 
   before(:each) do
@@ -93,7 +93,7 @@ RSpec.describe '/notes', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        { prayer_id: prayer.id, title: Faker::Lorem.word, content: Faker::Lorem.sentence }
+        { user_id: author.id, prayer_id: prayer.id, title: Faker::Lorem.word, content: Faker::Lorem.sentence }
       end
 
       it 'updates the requested note' do

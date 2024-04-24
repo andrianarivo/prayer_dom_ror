@@ -1,4 +1,4 @@
-<div class="relative">
+<div id="<%= dom_id prayer %>" class="relative">
   <div class="max-w-3xl rounded-xl border border-gray-300 border-solid overflow-hidden shadow-lg flex flex-col gap-4 px-6 py-4">
     <!-- Card Header -->
     <div class="flex gap-3">
@@ -31,7 +31,7 @@
     <!-- Card Footer -->
     <div class="flex justify-between items-center">
       <div class="flex gap-2 items-center">
-        <%= render partial: "shared/avatar", user: prayer.user %>
+        <%= render partial: "shared/avatar", locals: { user: prayer.user } %>
         <p class="text-base font-medium"><%= prayer.user.username.capitalize %></p>
       </div>
       <div class="flex gap-2 items-center">

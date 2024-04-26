@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [24, 24]
+    attachable.variant :small, resize_to_limit: [48, 48]
   end
 
   # Include default devise modules. Others available are:

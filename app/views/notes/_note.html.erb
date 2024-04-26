@@ -1,5 +1,5 @@
 <div id="<%= dom_id note %>">
-  <%= render partial: "shared/avatar", locals: { user: note.user } %>
+  <%= render partial: "shared/avatar", locals: { user: note.user, size: 3, img_variant: :small } %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Note id:</strong>
     <%= note.id %>

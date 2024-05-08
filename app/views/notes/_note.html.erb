@@ -1,16 +1,18 @@
 <div id="<%= dom_id note %>">
-  <%= render partial: "shared/avatar", locals: { user: note.user, size: 3, img_variant: :small } %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Note id:</strong>
-    <%= note.id %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= note.title %>
-  </p>
-  <% if action_name != "show" %>
-    <%= link_to "Show this note", note, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this note", edit_note_path(note), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="chat <%= note.user == note.prayer.user ? "chat-end" : "chat-start" %> items-end">
+    <%= render partial: "shared/avatar", locals: { user: note.user, size: 3, img_variant: :small } %>
+    <div class="chat-bubble text-gray-500 bg-gray-100 w-full">
+      <div class="flex justify-between items-center w-full">
+        <h3 class="font-semibold text-black">
+          <%= note.title %>
+        </h3>
+        <span class="material-symbols-outlined small-icon">
+          description
+        </span>
+      </div>
+      <p class="chat-content w-full">
+        <%= note.content %>
+      </p>
+    </div>
+  </div>
 </div>

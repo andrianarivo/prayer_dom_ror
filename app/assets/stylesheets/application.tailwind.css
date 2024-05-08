@@ -6,6 +6,10 @@
   .btn-transparent {
     @apply bg-transparent border-transparent shadow-none hover:bg-transparent hover:border-transparent hover:shadow-none;
   }
+
+  .chat-content {
+    @apply max-w-[90%];
+  }
 }
 
 .small-icon {

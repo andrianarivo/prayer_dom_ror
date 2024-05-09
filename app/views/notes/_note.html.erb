@@ -10,9 +10,12 @@
           description
         </span>
       </div>
-      <p class="chat-content w-full">
+      <p class="chat-content text-sm w-full">
         <%= note.content %>
       </p>
+    </div>
+    <div class="chat-footer">
+      <p class="text-gray-400 text-sm"><%= note.created_at %></p>
     </div>
   </div>
 </div>

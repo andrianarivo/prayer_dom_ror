@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="chat-footer">
-      <p class="text-gray-400 text-sm"><%= note.created_at %></p>
+      <time class="text-gray-400 text-sm" datetime="<%= note.created_at %>" data-controller="date"></time>
     </div>
   </div>
 </div>

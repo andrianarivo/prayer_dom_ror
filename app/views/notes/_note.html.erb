@@ -1,5 +1,5 @@
 <div id="<%= dom_id note %>">
-  <div class="chat <%= note.user == note.prayer.user ? "chat-end" : "chat-start" %>">
+  <div class="chat <%= note.user == current_user ? "chat-end" : "chat-start" %>">
     <div class="chat-image">
       <%= render partial: "shared/avatar", locals: { user: note.user, size: 3, img_variant: :small } %>
     </div>
@@ -16,8 +16,37 @@
         <%= note.content %>
       </p>
     </div>
-    <div class="chat-footer">
-      <time class="text-gray-400 text-sm" datetime="<%= note.created_at %>" data-controller="date"></time>
+    <div class="chat-footer flex items-center justify-between pr-4 pl-4 w-full max-w-[90%]">
+      <time class="text-gray-400 text-sm" datetime="<%= note.created_at %>" data-controller="timeago"></time>
+      <div class="flex flex-row">
+        <% if note.user == current_user %>
+          <button class="btn btn-transparent text-gray-500 font-normal min-h-8 h-8 pl-2 pr-2">
+            <span class="material-symbols-outlined small-icon">
+              edit
+            </span>
+            <p class="text-sm">Edit</p>
+          </button>
+          <button class="btn btn-transparent text-gray-500 font-normal min-h-8 h-8 pl-2 pr-2">
+            <span class="material-symbols-outlined small-icon">
+              delete
+            </span>
+            <p class="text-sm">Remove</p>
+          </button>
+        <% else %>
+          <button class="btn btn-transparent text-gray-500 font-normal min-h-8 h-8 pl-2 pr-2">
+            <span class="material-symbols-outlined small-icon">
+              quickreply
+            </span>
+            <p class="text-sm">Private reply</p>
+          </button>
+          <button class="btn btn-transparent text-gray-500 font-normal min-h-8 h-8 pl-2 pr-2">
+            <span class="material-symbols-outlined small-icon">
+              reply
+            </span>
+            <p class="text-sm">Reply</p>
+          </button>
+        <% end%>
+      </div>
     </div>
   </div>
 </div>

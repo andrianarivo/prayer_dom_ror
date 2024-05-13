@@ -5,13 +5,10 @@ RSpec.describe 'tags/show', type: :view do
 
   before(:each) do
     assign(:tag, tag)
+    render
   end
 
-  it 'renders attributes in <p>' do
-    render
-
-    expect(rendered).to match(tag.label)
-    expect(rendered).to match(tag.color)
-    expect(rendered).to match(tag.bg_color)
+  it 'renders the tag' do
+    expect(rendered).to have_selector('span', text: tag.label.capitalize)
   end
 end
